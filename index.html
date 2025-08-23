@@ -54,15 +54,18 @@
         .sidebar::-webkit-scrollbar-thumb:hover { background-color: var(--primary-accent); }
 
         .profile-photo {
-            width: 120px; height: 120px; border-radius: 50%;
-            background-color: transparent;
+            max-width: 120px;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            background-image: url('imagCV/yurksph.jpg');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
             border: 4px solid var(--primary-accent);
             margin-bottom: 15px;
-            background-image: url('assets/profile-photo.jpg');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
             transition: transform 0.3s ease;
+            object-fit: contain;
         }
         .profile-photo:hover { transform: scale(1.05); }
 
