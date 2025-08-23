@@ -54,20 +54,16 @@
         .sidebar::-webkit-scrollbar-thumb:hover { background-color: var(--primary-accent); }
 
         .profile-photo {
-            max-width: 120px;
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            border-radius: 50%;
-            background-image: url('imagCV/yurksph.jpg');
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
+            width: 120px; height: 120px; border-radius: 50%;
+            background-color: transparent;
             border: 4px solid var(--primary-accent);
             margin-bottom: 15px;
+            background-image: url('assets/profile-photo.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
             transition: transform 0.3s ease;
-            object-fit: contain;
-            }
-        
+        }
         .profile-photo:hover { transform: scale(1.05); }
 
         .sidebar h1 { font-size: 1.5em; color: #fff; text-align: center; margin-bottom: 5px; }
@@ -120,10 +116,11 @@
         .project-item a { color: var(--primary-accent); text-decoration: none; font-weight: bold; }
 
         .experience-item { margin-bottom: 25px; padding-left: 25px; border-left: 3px solid var(--primary-accent); }
-        .experience-item h3 { font-size: 1.3em; color: #fff; }
+        .experience-item h3 { font-size: 1.3em; color: #fff; display: flex; align-items: center; justify-content: space-between; }
         .experience-item .date { color: var(--text-dark); font-style: italic; margin-bottom: 10px; }
         .experience-item a { color: var(--primary-accent); text-decoration: none; font-weight: bold; }
         .experience-item a:hover { text-decoration: underline; }
+        .company-logo { height: 40px; width: auto; margin-left: 15px; filter: invert(1) brightness(2); }
 
         /* --- Responsive Design --- */
         @media (max-width: 992px) { .container-grid { grid-template-columns: 1fr; } .sidebar { position: relative; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border-color); } .main-content { grid-column: 1 / -1; padding: 30px 20px; } }
@@ -239,12 +236,12 @@
 
             <section id="experiencia" class="content-section">
                 <h2>Experiencia Laboral</h2>
-                <div class="experience-item"><h3>Analista de Datos, Especialista “A” en Prevención de Fraudes</h3><p class="date">Banco Santander, Querétaro | Octubre 2023 – Abril 2025 (1.5 años)</p><p>Monitoreo y análisis de alertas de fraude, aplicación de medidas de mitigación. Automatización con VBA, actualización de bases de datos. Propuesta de plan de mejora en comunicación interna para optimizar resultados y productividad.</p></div>
+                <div class="experience-item"><h3><span>Analista de Datos, Especialista “A” en Prevención de Fraudes</span><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Santander_logo.svg/2560px-Santander_logo.svg.png" alt="Santander Logo" class="company-logo"></h3><p class="date">Banco Santander, Querétaro | Octubre 2023 – Abril 2025 (1.5 años)</p><p>Monitoreo y análisis de alertas de fraude, aplicación de medidas de mitigación. Automatización con VBA, actualización de bases de datos. Propuesta de plan de mejora en comunicación interna para optimizar resultados y productividad.</p></div>
                 <div class="experience-item"><h3>Auxiliar Administrativo y Chofer Almacenista</h3><p class="date">TVC en Linea.com, Querétaro | Abril 2015 – Marzo 2023 (8 años)</p><p>Atención al cliente, gestión de pedidos y cartera, conciliación bancaria, análisis financiero. Control de inventarios, embarques y entregas. Manejo de montacargas y optimización de procesos logísticos.</p></div>
-                <div class="experience-item"><h3>Asesor de Ventas</h3><p class="date">Sears, Tienda Departamental, DF Mexico | 05/12/2014 – 18/02/2015</p><p>Labores realizadas: Cierre de Caja, Venta y Cobro de Ropa Infantil, Limpieza y Acomodo de Mercancía.</p></div>
-                <div class="experience-item"><h3>Analista</h3><p class="date">Gate Gourmet & MAASA México (“BOGUET”), Logística; Preparación y distribución de alimentos, Aeropuerto Internacional de la Ciudad de México T2 | 04/11/2009 – 04/08/2014 (5 años)</p><p>Actividades realizadas: Generación de reportes, KPIs, ERP. Auditoría y Control de Inventarios. Generación de Presupuesto, Proyección de ventas. Supervisor y Atención a Público. Manejo de VPN, Actualización de precios y costos. Encargado de tienda. Facturación de proveedores, control de inventarios, arqueos de caja. Manejo de ERP, SQL y Excel en un entorno logístico dinámico.</p></div>
+                <div class="experience-item"><h3><span>Asesor de Ventas</span><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Sears_logo.svg/2560px-Sears_logo.svg.png" alt="Sears Logo" class="company-logo"></h3><p class="date">Sears, Tienda Departamental, DF Mexico | 05/12/2014 – 18/02/2015</p><p>Labores realizadas: Cierre de Caja, Venta y Cobro de Ropa Infantil, Limpieza y Acomodo de Mercancía.</p></div>
+                <div class="experience-item"><h3><span>Analista</span><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Gate_Gourmet_logo.svg/2560px-Gate_Gourmet_logo.svg.png" alt="Gate Gourmet Logo" class="company-logo"></h3><p class="date">Gate Gourmet & MAASA México (“BOGUET”), Logística; Preparación y distribución de alimentos, Aeropuerto Internacional de la Ciudad de México T2 | 04/11/2009 – 04/08/2014 (5 años)</p><p>Actividades realizadas: Generación de reportes, KPIs, ERP. Auditoría y Control de Inventarios. Generación de Presupuesto, Proyección de ventas. Supervisor y Atención a Público. Manejo de VPN, Actualización de precios y costos. Encargado de tienda. Facturación de proveedores, control de inventarios, arqueos de caja. Manejo de ERP, SQL y Excel en un entorno logístico dinámico.</p></div>
                 <div class="experience-item"><h3>Gerente de Sucursal Saltillo</h3><p class="date">Photofolio | Octubre 2008 – Julio 2009</p><p>Atención a clientes, venta y acomodo de mercancía, depósitos bancarios, manejo de personal y control de inventarios.</p></div>
-                <div class="experience-item"><h3>Staff Tesorero / Proyeccionista</h3><p class="date">Cinemex, Exhibición de películas, Naucalpan México | 03/11/2001 – 28/08/2005</p><p>Atención a clientes, manejo de efectivo y POS. Recepción, armado y proyección de películas. Logros: Reconocimiento en el área de Conceciones Mzo-2002, Empleado del mes Abr-2002, Reconocimiento en el área de Tesorería Abr-2003, Reconocimiento en el área de Piso y Taquilla Dic-2003, Reconocimiento por participación en el 1er FICCO Mzo 2004, Reconocimiento en el área de Proyección Sep-2004, Reconocimiento por participación y proyección de subtítulos en 2do FICCO Mzo 2005.</p></div>
+                <div class="experience-item"><h3><span>Staff Tesorero / Proyeccionista</span><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Cinemex_logo.svg/1200px-Cinemex_logo.svg.png" alt="Cinemex Logo" class="company-logo"></h3><p class="date">Cinemex, Exhibición de películas, Naucalpan México | 03/11/2001 – 28/08/2005</p><p>Atención a clientes, manejo de efectivo y POS. Recepción, armado y proyección de películas. Logros: Reconocimiento en el área de Conceciones Mzo-2002, Empleado del mes Abr-2002, Reconocimiento en el área de Tesorería Abr-2003, Reconocimiento en el área de Piso y Taquilla Dic-2003, Reconocimiento por participación en el 1er FICCO Mzo 2004, Reconocimiento en el área de Proyección Sep-2004, Reconocimiento por participación y proyección de subtítulos en 2do FICCO Mzo 2005.</p></div>
             </section>
 
             <section id="educacion" class="content-section">
@@ -302,4 +299,3 @@
         });
     </script>
 </body>
-</html>
