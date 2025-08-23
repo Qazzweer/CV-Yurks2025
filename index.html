@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yurka Iturbide - Portfolio Digital</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+        :root {
+            --bg-dark-main: #10121A;
+            --bg-dark-secondary: #1C1E2D;
+            --primary-accent: #30E3CA;
+            --glow-color: rgba(48, 227, 202, 0.5);
+            --text-light: #E1E1E1;
+            --text-dark: #A1A1A1;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-dark-main);
+            color: var(--text-light);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .container-grid {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            min-height: 100vh;
+        }
+
+        /* --- Sidebar Navigation --- */
+        .sidebar {
+            background-color: var(--bg-dark-secondary);
+            padding: 40px 20px;
+            position: fixed;
+            height: 100%;
+            width: 240px;
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-y: auto;
+            transition: box-shadow 0.3s ease;
+            /* --- Añadido para Firefox --- */
+            scrollbar-width: thin;
+            scrollbar-color: var(--text-dark) var(--bg-dark-secondary);
+        }
+        /* --- Estilos para el Scrollbar (Chrome, Edge, Safari) --- */
+        .sidebar::-webkit-scrollbar {
+          width: 10px; /* Ancho del scrollbar */
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+          background: transparent; /* Fondo del camino del scroll, lo hacemos transparente */
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+          background-color: var(--text-dark); /* Color de la barra de scroll */
+          border-radius: 10px; /* Bordes redondeados */
+          border: 2px solid var(--bg-dark-secondary); /* Un pequeño borde para que no toque los límites */
+        }
+
+        .sidebar::-webkit-scrollbar-thumb:hover {
+          background-color: var(--primary-accent); /* Color al pasar el mouse por encima */
+        }
+        .sidebar:hover {
+            box-shadow: 0 0 25px var(--glow-color);
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #333;
+            border: 4px solid var(--primary-accent);
+            margin-bottom: 15px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s ease;
+        }
+        .profile-photo:hover {
+            transform: scale(1.05);
+        }
+
+        .sidebar h1 {
+            font-size: 1.5em;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .sidebar .subtitle {
+            font-size: 0.9em;
+            color: var(--primary-accent);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+            width: 100%;
+        }
+
+        .sidebar nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar nav a .fa-fw {
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar nav a:hover, .sidebar nav a.active {
+            background-color: var(--primary-accent);
+            color: var(--bg-dark-main);
+            transform: translateX(5px);
+        }
+        .sidebar nav a:hover .fa-fw, .sidebar nav a.active .fa-fw {
+            transform: scale(1.2);
+        }
+        
+        .contact-info {
+            margin-top: auto;
+            font-size: 0.85em;
+            width: 100%;
+        }
+        .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .contact-info a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .contact-info a:hover {
+            color: var(--primary-accent);
+        }
+
+        /* --- Main Content --- */
+        .main-content {
+            grid-column: 2 / -1;
+            padding: 40px 50px;
+        }
+
+        .content-section {
+            background: rgba(28, 30, 45, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUP 0.6s forwards;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        @keyframes fadeInUP {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-section h2 {
+            font-size: 2em;
+            color: var(--primary-accent);
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        /* --- Specific Sections --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .skill-category {
+            background-color: var(--bg-dark-main);
+            padding: 20px;
+            border-radius: 8px;
+            transition: box-shadow 0.3s ease;
+        }            
+        .skill-category:hover {
+            box-shadow: 0 0 25px var(--glow-color);   
+        }
+        .skill-category h3 {
+            color: var(--primary-accent);
+            margin-bottom: 15px;
+        }
+        .skill-category ul {
+            list-style: none;
+        }
+        .skill-category li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .skill-category li::before {
+            content: '✓';
+            color: var(--primary-accent);
+            position: absolute;
+            left: 0;
+        }
+
+        .project-item {
+            background-color: var(--bg-dark-main);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: box-shadow 0.3s ease;
+        }
+        .project-item:hover {
+            box-shadow: 0 0 25px var(--glow-color);
+        } 
+        .project-item h3 {
+            color: var(--primary-accent);
+        }
+        .project-item a {
+            color: var(--primary-accent);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .experience-item {
+            margin-bottom: 25px;
+            padding-left: 25px;
+            border-left: 3px solid var(--primary-accent);
+        }
+        .experience-item h3 {
+            font-size: 1.3em;
+            color: #fff;
+        }
+        .experience-item .date {
+            color: var(--text-dark);
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        .experience-item a {
+            color: var(--primary-accent);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .experience-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .container-grid {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+            .main-content {
+                grid-column: 1 / -1;
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .sidebar nav a {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container-grid">
+        <aside class="sidebar">
+            <div class="profile-photo"></div>
+            <h1>Yurka Iturbide Farfán</h1>
+            <p class="subtitle">Data & Admin Analyst | Querétaro, México</p>
+
+            <nav>
+                <ul>
+                    <li><a href="#perfil" class="active"><i class="fa-solid fa-user fa-fw"></i> Perfil</a></li>
+                    <li><a href="#habilidades"><i class="fa-solid fa-cogs fa-fw"></i> Habilidades</a></li>
+                    <li><a href="#proyectos"><i class="fa-solid fa-project-diagram fa-fw"></i> Proyectos</a></li>
+                    <li><a href="#experiencia"><i class="fa-solid fa-briefcase fa-fw"></i> Experiencia</a></li>
+                    <li><a href="#educacion"><i class="fa-solid fa-graduation-cap fa-fw"></i> Educación</a></li>
+                    <li><a href="#cursos"><i class="fa-solid fa-certificate fa-fw"></i> Cursos</a></li>
+                    <li><a href="#adicionales"><i class="fa-solid fa-plus-circle fa-fw"></i> Adicional</a></li>
+                </ul>
+            </nav>
+            
+            <div class="contact-info">
+                <p><strong><i class="fa-solid fa-link fa-fw"></i> Contacto:</strong></p>
+                <p><i class="fa-solid fa-envelope fa-fw"></i> <a href="mailto:iturbideyka@gmail.com">iturbideyka@gmail.com</a></p>
+                <p><i class="fa-solid fa-phone fa-fw"></i> <a href="tel:4423508436">44.23.50.84.36</a></p>
+                <p><i class="fa-brands fa-linkedin fa-fw"></i> <a href="https://www.linkedin.com/in/yurka-iturbide" target="_blank">LinkedIn</a></p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <section id="perfil" class="content-section">
+                <h2>Perfil Profesional</h2>
+                <p>Profesional con más de 14 años de experiencia en análisis de datos, administración y logística. Destacado por habilidades en el manejo avanzado de Excel, bases de datos y herramientas ERP. Enfocado en la resolución de problemas, liderazgo y optimización de procesos para mejorar la eficiencia operativa y mitigar riesgos. Autodidacta con conocimientos en desarrollo web y programación básica.</p>
+            </section>
+
+            <section id="habilidades" class="content-section">
+                <h2>Habilidades Destacadas</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Administrativas</h3>
+                        <ul>
+                            <li>Comunicación Organizacional</li>
+                            <li>Liderazgo y Trabajo Colaborativo</li>
+                            <li>Atención al Detalle y Organización</li>
+                            <li>Resolución de Problemas</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Logísticas</h3>
+                        <ul>
+                            <li>Control de Inventarios</li>
+                            <li>Gestión de Almacenes</li>
+                            <li>Manejo de Montacargas</li>
+                            <li>Optimización de Procesos</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Análisis de Datos</h3>
+                        <ul>
+                            <li>Excel Avanzado (Dashboards, VBA)</li>
+                            <li>Bases de Datos (SQL)</li>
+                            <li>Generación de KPIs y Proyecciones</li>
+                            <li>Monitoreo y Análisis de Datos</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Tecnologías</h3>
+                        <ul>
+                            <li>HTML & CSS</li>
+                            <li>JavaScript Básico</li>
+                            <li>Python Básico</li>
+                            <li>ERP (CONTPAQi, FrontRest)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="proyectos" class="content-section">
+                <h2>Proyectos Destacados</h2>
+                <div class="project-item">
+                    <h3>Nombre del Proyecto 1 (Ej: Dashboard de Ventas)</h3>
+                    <p>Breve descripción del proyecto, las tecnologías utilizadas (Excel, SQL, Python) y el objetivo que se buscaba. Explica cuál fue tu rol y el resultado obtenido.</p>
+                    <p><a href="#" target="_blank">Ver Proyecto en Vivo</a> o <a href="#" target="_blank">Ver Código en GitHub</a></p>
+                </div>
+                <div class="project-item">
+                    <h3>Nombre del Proyecto 2 (Ej: Automatización de Reportes)</h3>
+                    <p>Breve descripción del proyecto, las herramientas (VBA, Python Scripts) y el problema que resolvía. Cuantifica el resultado si es posible (ej: "se redujo el tiempo de generación de reportes en un 80%").</p>
+                    <p><a href="#">Ver Demostración</a></p>
+                </div>
+            </section>
+
+            <section id="experiencia" class="content-section">
+                <h2>Experiencia Laboral</h2>
+                <div class="experience-item">
+                    <h3>Analista de Datos, Especialista “A” en Prevención de Fraudes</h3>
+                    <p class="date">Banco Santander, Querétaro | Octubre 2023 – Abril 2025 (1.5 años)</p>
+                    <p>Monitoreo y análisis de alertas de fraude, aplicación de medidas de mitigación. Automatización con VBA, actualización de bases de datos. Propuesta de plan de mejora en comunicación interna para optimizar resultados y productividad.</p>
+                </div>
+                <div class="experience-item">
+                    <h3>Auxiliar Administrativo y Chofer Almacenista</h3>
+                    <p class="date">TVC en Linea.com, Querétaro | Abril 2015 – Marzo 2023 (8 años)</p>
+                    <p>Atención al cliente, gestión de pedidos y cartera, conciliación bancaria, análisis financiero. Control de inventarios, embarques y entregas. Manejo de montacargas y optimización de procesos logísticos.</p>
+                </div>
+                <div class="experience-item">
+                    <h3>Asesor de Ventas</h3>
+                    <p class="date">Sears, Tienda Departamental, DF Mexico | 05/12/2014 – 18/02/2015</p>
+                    <p>Labores realizadas: Cierre de Caja, Venta y Cobro de Ropa Infantil, Limpieza y Acomodo de Mercancía.</p>
+                </div>
+                <div class="experience-item">
+                    <h3>Analista</h3>
+                    <p class="date">Gate Gourmet & MAASA México (“BOGUET”), Logística; Preparación y distribución de alimentos, Aeropuerto Internacional de la Ciudad de México T2 | 04/11/2009 – 04/08/2014 (5 años)</p>
+                    <p>Actividades realizadas: Generación de reportes, KPIs, ERP. Auditoría y Control de Inventarios. Generación de Presupuesto, Proyección de ventas. Supervisor y Atención a Público. Manejo de VPN, Actualización de precios y costos. Encargado de tienda. Facturación de proveedores, control de inventarios, arqueos de caja. Manejo de ERP, SQL y Excel en un entorno logístico dinámico.</p>
+                </div>
+                <div class="experience-item">
+                    <h3>Gerente de Sucursal Saltillo</h3>
+                    <p class="date">Photofolio | Octubre 2008 – Julio 2009</p>
+                    <p>Atención a clientes, venta y acomodo de mercancía, depósitos bancarios, manejo de personal y control de inventarios.</p>
+                </div>
+                <div class="experience-item">
+                    <h3>Staff Tesorero / Proyeccionista</h3>
+                    <p class="date">Cinemex, Exhibición de películas, Naucalpan México | 03/11/2001 – 28/08/2005</p>
+                    <p>Atención a clientes, manejo de efectivo y POS. Recepción, armado y proyección de películas. Logros: Reconocimiento en el área de Conceciones Mzo-2002, Empleado del mes Abr-2002, Reconocimiento en el área de Tesorería Abr-2003, Reconocimiento en el área de Piso y Taquilla Dic-2003, Reconocimiento por participación en el 1er FICCO Mzo 2004, Reconocimiento en el área de Proyección Sep-2004, Reconocimiento por participación y proyección de subtítulos en 2do FICCO Mzo 2005.</p>
+                </div>
+            </section>
+
+            <section id="educacion" class="content-section">
+                <h2>Educación</h2>
+                <div class="experience-item">
+                    <h3>TSU en Administración y Gestión de PYMES (Titulado)</h3>
+                    <p class="date">Universidad Abierta y a Distancia de México, CDMX | 2015 – 2020</p>
+                </div>
+                <div class="experience-item">
+                    <h3>Licenciatura en Ciencias de la Comunicación (Trunco)</h3>
+                    <p class="date">Universidad Mexicana, Cd. Satélite Naucalpan | 2003 – 2005</p>
+                </div>
+            </section>
+
+            <section id="cursos" class="content-section">
+                <h2>Cursos y Certificaciones</h2>
+                <div class="experience-item">
+                    <h3>Excel Aplicado a los Negocios (Nivel Avanzado)</h3>
+                    <p class="date">Universidad Austral, Argentina | Marzo 2023</p>
+                    <p><a href="https://coursera.org/verify/K5ZKVV7E5FEH" target="_blank">Ver Certificado</a></p>
+                </div>
+                <div class="experience-item">
+                    <h3>Administración de la Capacitación y Desarrollo de los Recursos Humanos</h3>
+                    <p class="date">Dirección General de Concentración y Capacitación Laboral (STPS) | Julio 2023</p>
+                </div>
+                <div class="experience-item">
+                    <h3>Administrador de Bases de Datos Relacionales</h3>
+                    <p class="date">Edutin Academy, Newark, EE.UU. | Julio 2023</p>
+                    <p><a href="https://app.edutin.com/verify/9289048" target="_blank">Ver Certificado</a></p>
+                </div>
+                <div class="experience-item">
+                    <h3>Curso de Python</h3>
+                    <p class="date">CodeLiber | Agosto 2023</p>
+                </div>
+                <div class="experience-item">
+                    <h3>Curso de HTML</h3>
+                    <p class="date">CodeLiber | Agosto 2023</p>
+                </div>
+                <div class="experience-item">
+                    <h3>JavaScript Básico</h3>
+                    <p class="date">freeCodeCamp | Agosto 2023</p>
+                </div>
+                <div class="experience-item">
+                    <h3>Responsive Web Design</h3>
+                    <p class="date">freeCodeCamp | 31 Agosto 2023</p>
+                    <p><a href="https://www.freecodecamp.org/fcc966b87d7-a8b8-4" target="_blank">Ver Certificado</a></p>
+                </div>
+            </section>
+
+            <section id="adicionales" class="content-section">
+                <h2>Formaciones Adicionales e Intereses</h2>
+                <div class="skills-grid">
+                     <div class="skill-category">
+                        <h3>Formación Adicional</h3>
+                        <ul>
+                            <li>Curso de evacuación e incendios - Protección Civil | Abr 2003</li>
+                            <li>Curso Primeros Auxilios - Cruz Roja Juventud | 1997</li>
+                            <li>Director de gazeta interescolar | Nov 2004</li>
+                            <li>Publicación “La pluma y el dragón” - Editorial del Gob del DF | Julio 2005</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Intereses</h3>
+                        <ul>
+                            <li>Lectura y Cine</li>
+                            <li>Guitarrista y músico</li>
+                            <li>Organización y Metodología</li>
+                            <li>Disfrutar a mi familia</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+        // Simple script for active navigation link
+        const sections = document.querySelectorAll('.content-section');
+        const navLinks = document.querySelectorAll('.sidebar nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 60) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
