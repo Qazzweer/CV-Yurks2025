@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,7 @@
             --bg-dark-main: #10121A;
             --bg-dark-secondary: #1C1E2D;
             --primary-accent: #30E3CA;
-            --glow-color: rgba(48, 227, 202, 0.5);
+            --glow-color: #0000ff;
             --text-light: #E1E1E1;
             --text-dark: #A1A1A1;
             --border-color: rgba(255, 255, 255, 0.1);
@@ -112,19 +112,10 @@
         .skill-category h3 { color: var(--primary-accent); margin-bottom: 15px; }
         .skill-category ul { list-style: none; padding: 0; }
         .skill-category li { margin-bottom: 10px; padding-left: 20px; position: relative; }
-                .skill-category li::before { content: '✓'; color: var(--primary-accent); position: absolute; left: 0; }
+        .skill-category li::before { content: '✓'; color: var(--primary-accent); position: absolute; left: 0; }
 
-        #adicionales .skill-category a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        #adicionales .skill-category a:hover {
-            color: var(--primary-accent);
-        }
-
-        .project-item { background-color: var(--bg-dark-main); padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        #adicionales .skill-category a { color: var(--text-light); text-decoration: none; transition: color 0.3s ease; }
+        #adicionales .skill-category a:hover { color: var(--primary-accent); }
 
         .project-item { background-color: var(--bg-dark-main); padding: 20px; border-radius: 8px; margin-bottom: 20px; }
         .project-item h3 { color: var(--primary-accent); }
@@ -144,23 +135,37 @@
             border-radius: 8px;
             transition: transform 0.3s ease;
         }
-        .experience-item h3:hover .company-logo {
-            transform: scale(1.1);
-        }   
+        .experience-item h3:hover .company-logo { transform: scale(1.1); }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--bg-dark-secondary);
+            color: var(--text-light);
+            border-top: 1px solid var(--border-color);
+            width: calc(100% - 260px);
+            margin-left: 260px;
+        }
+        footer a {
+            color: var(--primary-accent);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
 
         /* --- Responsive Design --- */
         @media (max-width: 992px) {
             .container-grid { grid-template-columns: 1fr; }
             .sidebar { position: relative; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border-color); }
             .main-content { grid-column: 1 / -1; padding: 30px 20px; }
+            footer { width: 100%; margin-left: 0; }
         }
         @media (max-width: 768px) {
             .grid-3-col { grid-template-columns: 1fr; }
             .company-logo { width: 40px; height: 40px; }
-            .experience-item h3 {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 5px;
         }
     </style>
 </head>
@@ -186,6 +191,7 @@
             <div class="sidebar-section">
                 <h3><i class="fa-solid fa-id-card fa-fw"></i> Datos Generales</h3>
                 <p><i class="fa-solid fa-calendar-day fa-fw"></i> 44 años</p>
+                <p><i class="fa-solid fa-id-card fa-fw"></i> Licencia tipo "B"</p>
                 <p><i class="fa-solid fa-map-marker-alt fa-fw"></i>Villas de Santiago, Querétaro, México</p>
                 <p><i class="fa-solid fa-flag fa-fw"></i> Mexicano</p>
             </div>
@@ -194,11 +200,13 @@
                 <p><i class="fa-solid fa-envelope fa-fw"></i> <a href="mailto:iturbideyka@gmail.com">iturbideyka@gmail.com</a></p>
                 <p><i class="fa-solid fa-phone fa-fw"></i> <a href="tel:4423508436">442-350-84-36</a></p>
                 <p><i class="fa-brands fa-linkedin fa-fw"></i> <a href="https://www.linkedin.com/in/yurka-iturbide" target="_blank">LinkedIn</a></p>
+                <p><i class="fa-solid fa-file-pdf fa-fw"></i> <a href="cv-yurka.pdf" target="_blank">Descargar CV en PDF</a></p>
+                <p>Actualizado en Agosto 2025 | Diseñado por Yurka Iturbide</p>
             </div>
         </aside>
 
         <main class="main-content">
-            <section id="perfil" class="content-section"><h2>Perfil Profesional</h2><p>Técnico superior universitario con más de 15 años de experiencia en análisis de datos, administración y logística. Destacado por habilidades en el manejo avanzado de Excel, bases de datos y herramientas tecnológicas. Enfocado en la resolución de problemas, atención al detalle, liderazgo y optimización de procesos anteponiendo la mejora y eficiencia operativa. Autodidacta multidsciplinario con conocimientos en desarrollo web y programación básica. Estoy en constante búsqueda de conocimiento y oportunidades para crecer profesionalmente y enfrentar próximos desafíos.</p></section>
+            <section id="perfil" class="content-section"><h2>Perfil Profesional</h2><p>Técnico superior universitario con más de 18 años de experiencia en análisis de datos, administración y logística. Destacado por habilidades en el manejo avanzado de Excel, bases de datos y herramientas tecnológicas. Enfocado en la resolución de problemas, atención al detalle, liderazgo y optimización de procesos anteponiendo la mejora y eficiencia operativa. Autodidacta multidsciplinario con conocimientos en desarrollo web y programación básica. Estoy en constante búsqueda de conocimiento y oportunidades para crecer profesionalmente y enfrentar próximos desafíos.</p></section>
             <section id="actualmente" class="content-section">
                 <h2>Actualmente</h2>
                 <div class="grid-2-col">
@@ -216,8 +224,8 @@
                         <h3><i class="fa-solid fa-book-reader fa-fw"></i> Formación Continua</h3>
                         <p>Comprometido con el aprendizaje constante para fortalecer mi perfil profesional y logístico:</p>
                         <ul>
-                            <li>Cursando "Logística y Cadena de Suministro" en <strong>Udemy</strong></li>
-                            <li>Explorando activamente nuevas tecnologías (Web 3.0, blockchain, smart contracts, cryptocurrencies) y metodologías de análisis de datos (Análisis Bussines Intelligent para anticipar y recomendar)</li>
+                            <li>Cursando "Logística y Cadena de Suministro" en <strong>Udemy</strong>.</li>
+                            <li>Explorando activamente nuevas tecnologías (Web 3.0, blockchain, smart contracts, cryptocurrencies) y metodologías de análisis de datos (Análisis Bussines Intelligent para anticipar y recomendar).</li>
                         </ul>
                     </div>
                 </div>
@@ -236,7 +244,7 @@
                     </div>
                     <div class="item-card">
                         <h3><i class="fa-solid fa-shield-halved fa-fw"></i> Valores</h3>
-                        <p>Honestidad. responsabilidad. Respeto. Pilares de todas mis interacciones profesionales y personales.</p>
+                        <p>Honestidad. Responsabilidad. Respeto. Pilares de todas mis interacciones profesionales y personales.</p>
                     </div>
                 </div>
             </section>
@@ -254,7 +262,7 @@
                     </div>
                     <div class="skill-category">
                         <h3>Análisis de Datos</h3>
-                        <ul><li>Excel Avanzado (Dashboards, VBA)</li><li>Bases de Datos (SQL)</li><li>Generación de KPIs y Dashboardsi><li>Monitoreo y Análisis de Datos</li></ul>
+                        <ul><li>Excel Avanzado (Dashboards, VBA)</li><li>Bases de Datos (SQL)</li><li>Generación de KPIs y Dashboards</li><li>Monitoreo y Análisis de Datos</li></ul>
                     </div>
                     <div class="skill-category">
                         <h3>Tecnologías</h3>
@@ -269,8 +277,10 @@
 
             <section id="proyectos" class="content-section">
                 <h2>Proyectos Destacados</h2>
-                <div class="project-item"><h3>Nombre del Proyecto 1 (Ej: Dashboard de Ventas)</h3><p>Breve descripción del proyecto, las tecnologías utilizadas (Excel, SQL, Python) y el objetivo que se buscaba. Explica cuál fue tu rol y el resultado obtenido.</p><p><a href="#" target="_blank">Ver Proyecto en Vivo</a> o <a href="#" target="_blank">Ver Código en GitHub</a></p></div>
-                <div class="project-item"><h3>Nombre del Proyecto 2 (Ej: Automatización de Reportes)</h3><p>Breve descripción del proyecto, las herramientas (VBA, Python Scripts) y el problema que resolvía. Cuantifica el resultado si es posible (ej: "se redujo el tiempo de generación de reportes en un 80%").</p><p><a href="#">Ver Demostración</a></p></div>
+                <div class="project-item"><h3>Dashboard Control de Vehículos TVCenlinea.com</h3><p>Como Chofer-almacenista (2018) desarrollé un control de entregas, kilómetros recorridos y consumo de gasolina de diferentes vehículos a mi cargo. Tablas y gráficas en Excel fueron la base de este proyecto cuyo objetivo era tener un vistazo en tiempo real de las entregas realizadas por el chofer y un histórico a partir del llenado diario en un formulario interactivo que permitía recopilar y consolidar información y así llevar un mejor control preventivo y de rendimiento de los vehículos.</p><p><a href="imagCV/dashboardtvc.pdf" target="_blank">Ver Dashboard</a></p></div>
+                <div class="project-item"><h3>Validador y Control de Fondo de Caja TVCenlinea.com</h3><p>Como Auxiliar Administrativo (2020) desarrollé una plantilla para reducir a cero la diferencia en el cobro de efectivo por medio de un validador en excel que a su vez generaba referencia de depósito bancario, control de morralla y control por transacción por medio de fórmulas y hojas de cálculo.</p><p><a href="imagCV/validadortvc.pdf" target="_blank">Ver Validador</a></p></div>
+                <div class="project-item"><h3>Kpi´s Boguet</h3><p>Como Analista de Gategourmet y Supervisor en Boguet (2009-2014) desarrollé una plantilla de Kpi´s automatizada por la retralimentación diaria de cinco tiendas de comida rápida, donde en un solo archivo diario de excel se recopilaba información financiera y de inventario cruzando datos con ERP FrontRest para así llevar el control del inventario y seguimiento de presupuesto en tiempo real.</p><p><a href="imagCV/kpisboguet.pdf">Ver Kpi´s</a></p></div>
+                <div class="project-item"><h3>Nombre del Proyecto 3 (Ej: Automatización de Reportes)</h3><p>Breve descripción del proyecto, las herramientas (VBA, Python Scripts) y el problema que resolvía. Cuantifica el resultado si es posible (ej: "se redujo el tiempo de generación de reportes en un 80%").</p><p><a href="#">Ver Demostración</a></p></div>
             </section>
 
             <section id="experiencia" class="content-section">
@@ -294,10 +304,10 @@
                     <p>Empresa transnacional. Atención al cliente, venta y cobro de ropa infantil, cierre de caja, limpieza y acomodo de mercancía.</p>
                 </div>
                 <div class="experience-item">
-                    <h3><span>Analista (finanzas) y Supervisor de Operaciones</span><img src="imagCV/gate.png" alt="Gate Gourmet Logo" class="company-logo"></h3>
-                    <p class="date"><a href="imagCV/credaicm.jpg" target="_blank">Gate Gourmet & Maasa México. Catering aéreo.</a></p>
+                    <h3><span>Analista y Supervisor</span><img src="imagCV/gate.png" alt="Gate Gourmet Logo" class="company-logo"></h3>
+                    <p class="date"><a href="imagCV/credaicm.jpg" target="_blank">Gate Gourmet & Maasa. Catering aéreo. | Boguet. Cadena de cómida rápida.</a></p>
                     <p class="date"><a href="imagCV/constgateg.jpg" target="_blank">Aeropuerto Internacional de la CDMX Terminal-2 | Noviembre 2009 – Agosto 2014 (5 años)</a></p>
-                    <p>Empresa transnacional de preparación y distribución de alimentos. Logística, supervisión operativa, generación de reportes, generación de KPI´s y Dashboards. Facturación a proveedores(Starbucks, Tiendas Extra). Proyección de ventas. Manejo de bases de datos. Activiades en "Boguet": Supervisor y atención al público. Actualización de precios y control de costos. Encargado de tienda. Auditoría y control de inventarios, arqueos de caja. Manejo de ERP Front Desk POS, SQL y Excel.</p>
+                    <p>Empresa transnacional de preparación y distribución de alimentos. Rol dual. Logística, generación de reportes, generación de KPI´s y Dashboards. Facturación a proveedores(Starbucks, Tiendas Extra). Proyección de ventas. Manejo de bases de datos. Activiades en "Boguet": Supervisor y atención al público. Actualización de precios y control de costos. Encargado de tienda. Auditoría y control de inventarios, arqueos de caja. Manejo de ERP Front Desk POS, SQL y Excel.</p>
                 </div>
                 <div class="experience-item">
                     <h3><span>Encargado de Sucursal</span><img src="imagCV/photofolio.png" alt="Photofolio Logo" class="company-logo"></h3>
@@ -315,7 +325,7 @@
                     <h3><span>Staff Multifuncional</span><img src="imagCV/cinemex.png" alt="Cinemex Logo" class="company-logo"></h3>
                     <p class="date"><a href="imagCV/credcinemex.jpg" target="_blank">Cinemex, Exhibición de películas.</a></p>
                     <p class="date">Naucalpan, México | Noviembre 2001 – Agosto 2005</p>
-                    <p>Empresa mexicana. Atención a clientes, manejo de efectivo y POS. Recepción, armado y proyección de películas. Logros: Reconocimiento en el área de Concesiones Mar-2002, Empleado del mes Abr-2002, Reconocimiento en el área de Tesorería Abr-2003, <a href="imagCV/piso022003" target="_blank">Reconocimiento en el área de Piso y Taquilla Dic-2003</a>, <a href="imagCV/ficco2004" target="_blank">Reconocimiento por participación en el 1er FICCO Mar-2004</a>, <a href="imagCV/proy082004" target="_blank">Reconocimiento en el área de Proyección Ago-2004</a>, <a href="imagCV/proy022005" target="_blank">Reconocimiento en el área de Proyección Feb-2005</a>, Reconocimiento por participación y proyección de subtítulos en 2do FICCO Mar-2005.</p>
+                    <p>Empresa mexicana. Atención a clientes, manejo de efectivo y POS. Recepción, armado y proyección de películas. Logros: Reconocimiento en el área de Concesiones Mar-2002, Empleado del mes Abr-2002, Reconocimiento en el área de Tesorería Abr-2003, <a href="imagCV/piso022003.jpg" target="_blank">Reconocimiento en el área de Piso y Taquilla Dic-2003</a>, <a href="imagCV/ficco2004.jpg" target="_blank">Reconocimiento por participación en el 1er FICCO Mar-2004</a>, <a href="imagCV/proy082004" target="_blank">Reconocimiento en el área de Proyección Ago-2004</a>, <a href="imagCV/proy022005.jpg" target="_blank">Reconocimiento en el área de Proyección Feb-2005</a>, Reconocimiento por participación y proyección de subtítulos en 2do FICCO Mar-2005.</p>
                 </div>
             </section>
             
@@ -331,16 +341,14 @@
                 <div class="experience-item"><h3>Excel Aplicado a los Negocios (Nivel Avanzado)</h3><p class="date">Universidad Austral, Argentina | Marzo 2023</p><p><a href="https://coursera.org/verify/K5ZKVV7E5FEH" target="_blank">Ver Certificado</a></p></div>
                 <div class="experience-item"><h3>Administración de la Capacitación y Desarrollo de los Recursos Humanos</h3><p class="date">Dirección General de Concentración y Capacitación Laboral (STPS) | Julio 2023</p><p><a href="imagCV/procadist.pdf" target="_blank">Ver Constancia</a></p></div>
                 <div class="experience-item"><h3>Administrador de Bases de Datos Relacionales</h3><p class="date">Edutin Academy, Newark, EE.UU. | Julio 2023</p><p><a href="https://app.edutin.com/verify/9289048" target="_blank">Ver Certificado</a></p></div>
-                <div class="experience-item"><h3>Curso de Python</h3><p class="date">CodeLiber | Agosto 2023</p></div>
-                <div class="experience-item"><h3>Curso de HTML</h3><p class="date">CodeLiber | Agosto 2023</p></div>
-                <div class="experience-item"><h3>JavaScript Básico</h3><p class="date">freeCodeCamp | Agosto 2023</p></div>
+                <div class="experience-item"><h3>Curso de Python, HTML Y CSS</h3><p class="date">CodeLiber | Agosto 2023</p></div>                
                 <div class="experience-item"><h3>Responsive Web Design</h3><p class="date">freeCodeCamp | 31 Agosto 2023</p><p><a href="https://www.freecodecamp.org/certification/fcc966b87d7-a8b8-48f9-a4ad-8bacbefc2eab/responsive-web-design " target="_blank">Ver Certificado</a></p></div>
             </section>
 
             <section id="adicionales" class="content-section">
                 <h2>Formaciones Adicionales e Intereses</h2>
                 <div class="skills-grid">
-                     <div class="skill-category">
+                    <div class="skill-category">
                         <h3>Formación Adicional</h3>
                         <ul>
                             <li><a href="imagCV/constprotcivilqro.jpg" target="_blank">Curso Primeros Auxilios, Prevención de Incendios y Evacuación de Inmuebles - DISA | Feb 2017</a></li>
@@ -361,8 +369,11 @@
                     </div>
                 </div>
             </section>
-        </main>
+        </main> 
     </div>
+    <footer>
+        <p>Actualizado en Agosto 2025 | Diseñado por Yurka Iturbide | <a href="imagCV/cvyka2025.pdf" target="_blank">Descargar CV en PDF</a></p>
+    </footer>
     <script>
         // Simple script for active navigation link
         const sections = document.querySelectorAll('.content-section');
