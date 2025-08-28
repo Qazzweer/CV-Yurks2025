@@ -48,58 +48,59 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 5px; /* Further reduced from 10px for screen */
             color: #333;
             background-color: #fff;
             font-size: 12px;
-            line-height: 1.4; /* Optimizado para espacio */
+            line-height: 1.4; /* Optimized for space */
         }
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 10px;
+            max-width: 100%; /* Use full width */
+            width: 100%;
+            margin: 0;
+            padding: 2px; /* Further reduced from 5px */
             background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: none; /* Removed shadow for print optimization */
         }
         .header {
             background-color: #1B263B;
             color: #fff;
-            padding: 20px;
+            padding: 10px; /* Reduced from 20px */
             border-radius: 5px 5px 0 0;
-            display: flex; /* Usar flex para dividir en tres */
-            align-items: center; /* Centra verticalmente */
-            justify-content: space-between; /* Distribuye el espacio */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         .header-photo {
-            flex: 0 0 auto; /* No crece ni se encoge */
+            flex: 0 0 auto;
         }
         .header-photo img {
-            width: 100px;
-            height: 100px;
+            width: 80px; /* Slightly reduced for space */
+            height: 80px;
             border-radius: 50%;
         }
         .header-name {
-            flex: 1; /* Ocupa el espacio central */
-            text-align: center; /* Centra el nombre y puesto */
+            flex: 1;
+            text-align: center;
         }
         .header h1 {
             margin: 0;
-            font-size: 28px;
+            font-size: 24px; /* Slightly reduced for space */
         }
         .header h2 {
-            margin: 5px 0;
-            font-size: 16px;
+            margin: 3px 0; /* Reduced margin */
+            font-size: 14px; /* Slightly reduced */
             font-weight: normal;
         }
         .header-contact {
-            flex: 0 0 auto; /* No crece ni se encoge */
-            text-align: right; /* Alinea a la derecha */
+            flex: 0 0 auto;
+            text-align: right;
         }
         .contact {
             display: flex;
-            flex-direction: column; /* Disposición en columna */
-            gap: 5px;
-            font-size: 11px;
+            flex-direction: column;
+            gap: 3px; /* Reduced from 5px */
+            font-size: 10px; /* Slightly reduced */
         }
         .contact a {
             color: #fff;
@@ -109,78 +110,78 @@
             text-decoration: underline;
         }
         .section {
-            padding: 15px;
-            margin-bottom: 10px;
+            padding: 8px; /* Reduced from 15px */
+            margin-bottom: 5px; /* Reduced from 10px */
             background-color: #E8ECEF;
             border-radius: 5px;
         }
         .section h3 {
             color: #1B263B;
-            font-size: 16px;
-            margin: 0 0 10px;
+            font-size: 14px; /* Reduced from 16px */
+            margin: 0 0 5px; /* Reduced margin */
             border-bottom: 2px solid #1B263B;
-            padding-bottom: 5px;
+            padding-bottom: 3px; /* Reduced from 5px */
         }
         .section p, .section ul {
-            margin: 5px 0;
-            text-align: justify; /* Justificación para contenidos extensos */
+            margin: 3px 0; /* Reduced from 5px */
+            text-align: justify;
         }
         .section ul {
-            padding-left: 20px;
+            padding-left: 15px; /* Reduced from 20px */
             list-style-type: disc;
         }
         .skills-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 10px 0;
+            margin: 5px 0; /* Reduced from 10px */
         }
         .skills-table td {
-            padding: 8px;
+            padding: 5px; /* Reduced from 8px */
             vertical-align: top;
             border: 1px solid #ccc;
-            font-size: 11px;
-            text-align: left; /* Tabla mantiene alineación izquierda para claridad */
+            font-size: 10px; /* Reduced from 11px */
+            text-align: left;
         }
         .experience-item {
-            margin-bottom: 15px;
+            margin-bottom: 8px; /* Reduced from 15px */
         }
         .experience-item h4 {
-            margin: 5px 0;
-            font-size: 14px;
+            margin: 3px 0; /* Reduced from 5px */
+            font-size: 12px; /* Reduced from 14px */
             color: #1B263B;
         }
         .experience-item p {
-            margin: 3px 0;
-            font-size: 11px;
-            text-align: justify; /* Justificación específica para experiencia */
+            margin: 2px 0; /* Reduced from 3px */
+            font-size: 10px; /* Reduced from 11px */
+            text-align: justify;
         }
         .footer {
             text-align: center;
-            font-size: 10px;
+            font-size: 9px; /* Reduced from 10px */
             color: #666;
-            margin-top: 10px;
+            margin-top: 5px; /* Reduced from 10px */
         }
         @media print {
             body {
                 margin: 0;
-                padding: 0;
-                font-size: 10pt; /* Ajustado para Letter */
+                padding: 1mm; /* Minimal margin for Letter */
+                font-size: 10pt;
             }
             .container {
                 width: 100%;
-                max-width: 215.9mm; /* Ancho para Letter (8.5 pulgadas) */
-                padding: 5mm;
+                max-width: 215.9mm; /* Full Letter width */
+                padding: 1mm; /* Minimal padding */
                 box-shadow: none;
             }
             .header {
-                padding: 10mm;
+                padding: 5mm; /* Reduced from 10mm */
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
             }
             .header-photo img {
-                width: 80pt; /* Ajustado para impresión */
-                height: 80pt;
+                width: 60pt; /* Further reduced for print */
+                height: 60pt;
             }
             .header-name {
                 text-align: center;
@@ -188,23 +189,40 @@
             .header-contact {
                 text-align: right;
             }
+            .contact {
+                gap: 2pt; /* Reduced for print */
+                font-size: 8pt; /* Reduced for print */
+            }
             .section {
-                page-break-inside: avoid; /* Evita cortes en secciones */
+                padding: 4pt; /* Reduced for print */
+                margin-bottom: 3pt; /* Reduced for print */
+            }
+            .section h3 {
+                font-size: 11pt; /* Reduced for print */
+                margin: 0 0 3pt;
+                padding-bottom: 2pt;
             }
             .section p, .section ul {
-                text-align: justify; /* Justificación en PDF */
+                text-align: justify;
+            }
+            .section ul {
+                padding-left: 10pt; /* Reduced for print */
             }
             .skills-table td {
-                font-size: 9pt;
+                padding: 3pt; /* Reduced for print */
+                font-size: 8pt;
+            }
+            .experience-item {
+                margin-bottom: 5pt; /* Reduced for print */
             }
             .experience-item h4 {
-                font-size: 11pt;
+                font-size: 10pt; /* Reduced for print */
             }
             .experience-item p {
-                font-size: 9pt;
+                font-size: 8pt; /* Reduced for print */
             }
             .footer {
-                font-size: 8pt;
+                font-size: 7pt; /* Reduced for print */
             }
         }
     </style>
