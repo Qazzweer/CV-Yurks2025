@@ -7,50 +7,65 @@
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400&display=swap');
 
         :root {
-            --bg-dark-main: #10121A;
-            --bg-dark-secondary: #1C1E2D;
-            --primary-accent: #30E3CA;
-            --glow-color: #0000ff;
-            --text-light: #E1E1E1;
-            --text-dark: #A1A1A1;
-            --border-color: rgba(255, 255, 255, 0.1);
+            --bg-dark-main: #0a0a0a; /* Negro absoluto */
+            --bg-dark-secondary: #141414; /* Negro carbón */
+            --primary-accent: #00b7a8; /* Cian oscuro, menos brillante */
+            --secondary-accent: #990099; /* Morado gótico profundo */
+            --blue-accent: #141414; /* negro vibrante para borde de sidebar */
+            --dark-gray: #333333; /* Gris oscuro para divisiones y barra de desplazamiento */
+            --glow-sidebar: rgba(0, 183, 168, 0.3); /* Brillo cian tenue */
+            --glow-section: rgba(153, 0, 153, 0.3); /* Brillo morado oscuro */
+            --glow-project: rgba(0, 183, 168, 0.3); /* Brillo cian para proyectos */
+            --glow-skill: rgba(153, 0, 153, 0.3); /* Brillo morado para habilidades */
+            --glow-footer: rgba(0, 183, 168, 0.3); /* Brillo cian para footer */
+            --glow-values: rgba(153, 0, 153, 0.3); /* Brillo morado para valores */
+            --glow-mission: rgba(0, 183, 168, 0.3); /* Brillo cian para misión */
+            --glow-vision: rgba(153, 0, 153, 0.3); /* Brillo morado para visión */
+            --glow-link: rgba(0, 183, 168, 0.5); /* Brillo cian para enlaces */
+            --glow-link-hover: rgba(0, 183, 168, 0.8); /* Brillo cian más intenso para hover en enlaces */
+            --text-light: #b0b0b0; /* Gris plateado para texto */
+            --text-dark: #606060; /* Gris carbón para texto secundario */
+            --border-color: rgba(153, 0, 153, 0.15); /* Borde morado muy tenue */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-dark-main);
+            font-family: 'Orbitron', sans-serif; /* Fuente futurista gótica */
+            background: linear-gradient(145deg, var(--bg-dark-main), var(--bg-dark-secondary));
             color: var(--text-light);
             line-height: 1.8;
             overflow-x: hidden;
         }
 
+        p, li { font-family: 'Roboto', sans-serif; } /* Aplica Roboto a todos los <p> y <li> */
+
         .container-grid { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
 
         /* --- Sidebar --- */
         .sidebar {
-            background-color: var(--bg-dark-secondary);
+            background: var(--bg-dark-secondary);
             padding: 30px 20px;
             position: fixed;
             height: 100%;
             width: 260px;
-            border-right: 1px solid var(--border-color);
+            border-right: 2px solid var(--blue-accent);
             display: flex;
             flex-direction: column;
             align-items: center;
             overflow-y: auto;
             transition: box-shadow 0.3s ease;
             scrollbar-width: thin;
-            scrollbar-color: var(--text-dark) var(--bg-dark-secondary);
+            scrollbar-color: var(--dark-gray) var(--bg-dark-secondary);
+            margin-right: 15px;
         }
-        .sidebar:hover { box-shadow: 0 0 25px var(--glow-color); }
-        .sidebar::-webkit-scrollbar { width: 10px; }
+        .sidebar:hover { box-shadow: 0 0 15px var(--glow-sidebar); }
+        .sidebar::-webkit-scrollbar { width: 8px; }
         .sidebar::-webkit-scrollbar-track { background: transparent; }
-        .sidebar::-webkit-scrollbar-thumb { background-color: var(--text-dark); border-radius: 10px; border: 2px solid var(--bg-dark-secondary); }
+        .sidebar::-webkit-scrollbar-thumb { background-color: var(--dark-gray); border-radius: 10px; border: 2px solid var(--bg-dark-secondary); }
         .sidebar::-webkit-scrollbar-thumb:hover { background-color: var(--primary-accent); }
 
         .profile-photo {
@@ -62,72 +77,129 @@
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
-            border: 4px solid var(--primary-accent);
-            margin-bottom: 15px;
-            transition: transform 0.3s ease;
+            border: 3px solid var(--primary-accent);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             object-fit: contain;
         }
-        .profile-photo:hover { transform: scale(1.05); }
+        .profile-photo:hover { transform: scale(1.05); box-shadow: 0 0 10px var(--glow-sidebar); }
 
-        .sidebar h1 { font-size: 1.5em; color: #fff; text-align: center; margin-bottom: 5px; }
-        .sidebar .subtitle { font-size: 0.9em; color: var(--primary-accent); text-align: center; margin-bottom: 20px; }
+        .sidebar h1 { font-size: 1.5em; color: var(--secondary-accent); text-align: center; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 3px; }
+        .sidebar .subtitle { font-size: 0.9em; color: var(--primary-accent); text-align: center; margin-bottom: 25px; font-family: 'Roboto', sans-serif; }
 
-        .sidebar nav ul { list-style: none; width: 100%; padding: 0; }
-        .sidebar nav a { color: var(--text-dark); text-decoration: none; display: flex; align-items: center; gap: 15px; padding: 10px 15px; margin-bottom: 5px; border-radius: 8px; transition: all 0.3s ease; }
-        .sidebar nav a .fa-fw { transition: transform 0.3s ease; }
-        .sidebar nav a:hover, .sidebar nav a.active { background-color: var(--primary-accent); color: var(--bg-dark-main); transform: translateX(5px); }
-        .sidebar nav a:hover .fa-fw, .sidebar nav a.active .fa-fw { transform: scale(1.2); }
-        
-        .sidebar-section {
-            width: 100%; margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border-color);
+        .sidebar nav ul { list-style: none; width: 100%; padding: 0 10px; }
+        .sidebar nav a { 
+            color: var(--text-dark); 
+            text-decoration: none; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            padding: 10px 15px; 
+            margin-bottom: 8px; 
+            border-radius: 8px; 
+            transition: all 0.3s ease, opacity 0.3s ease; 
         }
-        .sidebar-section h3 { color: var(--primary-accent); margin-bottom: 10px; font-size: 1em; text-align: center; }
-        .sidebar-section p { font-size: 0.85em; color: var(--text-dark); display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-        .sidebar-section a { color: var(--text-dark); text-decoration: none; transition: color 0.3s ease; }
-        .sidebar-section a:hover { color: var(--primary-accent); }
+        .sidebar nav a .fa-fw { transition: transform 0.3s ease; }
+        .sidebar nav a:hover, .sidebar nav a.active { 
+            background-color: var(--primary-accent); 
+            color: var(--bg-dark-main); 
+            transform: translateX(5px); 
+            box-shadow: 0 0 8px var(--glow-sidebar); 
+            opacity: 0.8; /* Transparencia al hacer hover o en estado activo */
+        }
+        .sidebar nav a:hover .fa-fw, .sidebar nav a.active .fa-fw { transform: scale(1.2); }
+
+        .sidebar-section {
+            width: 100%; margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--border-color); padding-bottom: 10px;
+        }
+        .sidebar-section h3 { color: var(--primary-accent); margin-bottom: 12px; font-size: 1em; text-align: center; text-transform: uppercase; }
+        .sidebar-section p { font-size: 0.85em; color: var(--text-dark); display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-family: 'Roboto', sans-serif; }
+
+        .sidebar-section a { color: var(--text-dark); text-decoration: none; transition: color 0.3s ease, box-shadow 0.3s ease; }
+        .sidebar-section a:hover { color: var(--secondary-accent); box-shadow: 0 0 12px var(--glow-link-hover); }
 
         /* --- Main Content --- */
-        .main-content { grid-column: 2 / -1; padding: 40px 50px; }
-        .content-section { background: rgba(28, 30, 45, 0.7); backdrop-filter: blur(10px); padding: 30px; border-radius: 12px; margin-bottom: 30px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0; transform: translateY(20px); animation: fadeInUP 0.6s forwards; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .content-section:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        .main-content {
+            grid-column: 2 / -1;
+            padding: 25px 30px;
+            margin-right: 20px;
+        }
+        .content-section {
+            background: rgba(20, 20, 20, 0.9); /* Fondo más oscuro */
+            backdrop-filter: blur(6px);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUP 0.6s forwards;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        #cursos.content-section { margin-bottom: 10px; padding: 15px; }
+        .content-section:hover { transform: translateY(-5px); box-shadow: 0 8px 15px var(--glow-section); }
         @keyframes fadeInUP { to { opacity: 1; transform: translateY(0); } }
-        .content-section h2 { font-size: 2em; color: var(--primary-accent); margin-bottom: 25px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; }
+        .content-section h2 { font-size: 2em; color: var(--primary-accent); margin-bottom: 20px; border-bottom: 2px solid var(--secondary-accent); padding-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- Estilo para el enlace de deliPay --- */
+        #actualmente .item-card a {
+            color: var(--secondary-accent);
+            text-decoration: none;
+            font-weight: bold;
+            transition: box-shadow 0.3s ease;
+        }
+        #actualmente .item-card a:hover {
+            box-shadow: 0 0 12px var(--glow-link-hover);
+        }
+
+        /* --- Justified Text for Specific Sections --- */
+        #perfil p, #experiencia p, #proyectos p { text-align: justify; font-family: 'Roboto', sans-serif; }
 
         /* --- Specific Sections --- */
         .grid-2-col, .grid-3-col { display: grid; gap: 25px; }
-        .grid-2-col { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-        .grid-3-col { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        .grid-2-col { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+        .grid-3-col { grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
 
-        .item-card h3 { color: var(--primary-accent); margin-bottom: 10px; }
+        .item-card { transition: box-shadow 0.3s ease; padding: 20px; border: 1px solid var(--border-color); border-radius: 8px; }
+        .item-card:hover { box-shadow: 0 0 12px var(--glow-section); }
+        #filosofia .grid-3-col .item-card:nth-child(1):hover { box-shadow: 0 0 12px var(--glow-mission); }
+        #filosofia .grid-3-col .item-card:nth-child(2):hover { box-shadow: 0 0 12px var(--glow-vision); }
+        #filosofia .grid-3-col .item-card:nth-child(3):hover { box-shadow: 0 0 12px var(--glow-values); }
+        .item-card h3 { color: var(--primary-accent); margin-bottom: 12px; text-transform: uppercase; }
         .item-card ul { list-style: none; padding-left: 0; }
-        .item-card li { padding-left: 20px; position: relative; margin-bottom: 5px; }
-        .item-card li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--primary-accent); position: absolute; left: 0; }
+        .item-card li { padding-left: 20px; position: relative; margin-bottom: 8px; font-family: 'Roboto', sans-serif; }
+        .item-card li::before { content: '\f0e7'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--secondary-accent); position: absolute; left: 0; }
 
         .philosophy-section { text-align: center; }
-        .philosophy-section h3 { margin-top: 10px; }
+        .philosophy-section h3 { margin-top: 12px; }
 
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px; margin: 10px 0; }
         .skill-category { background-color: var(--bg-dark-main); padding: 20px; border-radius: 8px; transition: box-shadow 0.3s ease; }
-        .skill-category:hover { box-shadow: 0 0 15px var(--glow-color); }
-        .skill-category h3 { color: var(--primary-accent); margin-bottom: 15px; }
+        .skill-category:hover { box-shadow: 0 0 12px var(--glow-skill); }
+        .skill-category h3 { color: var(--primary-accent); margin-bottom: 12px; text-transform: uppercase; }
         .skill-category ul { list-style: none; padding: 0; }
-        .skill-category li { margin-bottom: 10px; padding-left: 20px; position: relative; }
-        .skill-category li::before { content: '✓'; color: var(--primary-accent); position: absolute; left: 0; }
+        .skill-category li { margin-bottom: 10px; padding-left: 20px; position: relative; font-family: 'Roboto', sans-serif; }
+        .skill-category li::before { content: '>>'; color: var(--secondary-accent); position: absolute; left: 0; }
 
-        #adicionales .skill-category a { color: var(--text-light); text-decoration: none; transition: color 0.3s ease; }
-        #adicionales .skill-category a:hover { color: var(--primary-accent); }
+        #adicionales .skill-category a { color: var(--text-light); text-decoration: none; transition: color 0.3s ease, box-shadow 0.3s ease; }
+        #adicionales .skill-category a:hover { color: var(--secondary-accent); box-shadow: 0 0 12px var(--glow-link-hover); }
 
-        .project-item { background-color: var(--bg-dark-main); padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-        .project-item h3 { color: var(--primary-accent); }
-        .project-item a { color: var(--primary-accent); text-decoration: none; font-weight: bold; }
+        .project-item { background-color: var(--bg-dark-main); padding: 20px; border-radius: 8px; margin-bottom: 20px; transition: box-shadow 0.3s ease; border: 1px solid var(--border-color); }
+        .project-item:hover { box-shadow: 0 0 12px var(--glow-project); }
+        .project-item h3 { color: var(--primary-accent); margin-bottom: 12px; text-transform: uppercase; }
+        .project-item a { color: var(--secondary-accent); text-decoration: none; font-weight: bold; transition: box-shadow 0.3s ease; }
+        .project-item a:hover { box-shadow: 0 0 12px var(--glow-link-hover); }
 
-        .experience-item { margin-bottom: 25px; padding-left: 25px; border-left: 3px solid var(--primary-accent); }
-        .experience-item h3 { font-size: 1.3em; color: #fff; display: flex; align-items: center; gap: 12px; }
-        .experience-item .date { color: var(--text-dark); font-style: italic; margin-bottom: 0px; }
-        .experience-item a { color: var(--primary-accent); text-decoration: none; font-weight: bold; }
-        .experience-item a:hover { text-decoration: underline; }
+        .experience-item { margin-bottom: 25px; padding: 25px; border-left: 3px solid var(--dark-gray); transition: transform 0.3s ease; }
+        #cursos .experience-item { margin-bottom: 15px; }
+        .experience-item:hover { transform: translateY(-2px); }
+        .experience-item h3 { font-size: 1.3em; color: var(--text-light); display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+        .experience-item .date { color: var(--text-dark); font-style: italic; margin-bottom: 8px; font-family: 'Roboto', sans-serif; }
+        .experience-item a { color: var(--secondary-accent); text-decoration: none; font-weight: bold; transition: box-shadow 0.3s ease; }
+        .experience-item a:hover { box-shadow: 0 0 12px var(--glow-link-hover); }
         .experience-item .date a { color: var(--text-dark); text-decoration: none; font-weight: bold; }
-        .experience-item .date a:hover { text-decoration: underline; }
+        .experience-item .date a:hover { box-shadow: 0 0 12px var(--glow-link-hover); }
         .company-logo {
             width: 120px;
             height: 50px;
@@ -135,37 +207,49 @@
             border-radius: 8px;
             transition: transform 0.3s ease;
         }
-        .experience-item h3:hover .company-logo { transform: scale(1.1); }
+        .experience-item a:hover .company-logo { transform: scale(1.1); }
+
+        /* --- Educación: Sin subrayado en enlaces --- */
+        #educacion .experience-item a { text-decoration: none; }
+        #educacion .experience-item a:hover { text-decoration: none; box-shadow: 0 0 12px var(--glow-link-hover); }
+
+        /* --- Cursos: Sin subrayado en hover --- */
+        #cursos .experience-item a:hover { text-decoration: none; box-shadow: 0 0 12px var(--glow-link-hover); }
 
         /* --- Footer --- */
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: var(--bg-dark-secondary);
+            padding: 25px;
+            background: var(--bg-dark-secondary);
             color: var(--text-light);
-            border-top: 1px solid var(--border-color);
+            border-top: 2px solid var(--primary-accent);
             width: calc(100% - 260px);
             margin-left: 260px;
+            margin-top: 20px;
+            transition: box-shadow 0.3s ease;
         }
-        footer a {
-            color: var(--primary-accent);
-            text-decoration: none;
-            font-weight: bold;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
+        footer:hover { box-shadow: 0 0 12px var(--glow-footer); }
+        footer a { color: var(--secondary-accent); text-decoration: none; font-weight: bold; transition: box-shadow 0.3s ease; }
+        footer a:hover { box-shadow: 0 0 12px var(--glow-link-hover); }
+        footer p { font-family: 'Roboto', sans-serif; }
 
         /* --- Responsive Design --- */
         @media (max-width: 992px) {
             .container-grid { grid-template-columns: 1fr; }
-            .sidebar { position: relative; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border-color); }
-            .main-content { grid-column: 1 / -1; padding: 30px 20px; }
-            footer { width: 100%; margin-left: 0; }
+            .sidebar { position: relative; width: 100%; height: auto; border-right: none; border-bottom: 2px solid var(--secondary-accent); margin-right: 0; }
+            .sidebar-section { text-align: center; }
+            .sidebar-section p { justify-content: center; }
+            .main-content { grid-column: 1 / -1; padding: 30px; margin-right: 0; }
+            footer { width: 100%; margin-left: 0; margin-top: 15px; }
         }
         @media (max-width: 768px) {
             .grid-3-col { grid-template-columns: 1fr; }
+            .grid-2-col { grid-template-columns: 1fr; }
             .company-logo { width: 40px; height: 40px; }
+            .content-section { padding: 20px; margin-bottom: 25px; }
+            #cursos.content-section { margin-bottom: 15px; }
+            .experience-item { padding: 20px; }
+            #cursos .experience-item { margin-bottom: 10px; }
         }
     </style>
 </head>
@@ -174,7 +258,7 @@
         <aside class="sidebar">
             <div class="profile-photo"></div>
             <h1>Yurka Iturbide Farfán</h1>
-            <p class="subtitle">Data & Admin Analyst | Emprendedor</p>
+            <p class="subtitle">Analista Administrativo y de Datos | Emprendedor</p>
             <nav>
                 <ul>
                     <li><a href="#perfil" class="active" aria-label="Sección Perfil"><i class="fa-solid fa-user fa-fw"></i> Perfil</a></li>
@@ -206,7 +290,7 @@
         </aside>
 
         <main class="main-content">
-            <section id="perfil" class="content-section"><h2>Perfil Profesional</h2><p>Técnico superior universitario con más de 18 años de experiencia en análisis de datos, administración y logística. Destacado por habilidades en el manejo avanzado de Excel, bases de datos y herramientas tecnológicas. Enfocado en la resolución de problemas, atención al detalle, liderazgo y optimización de procesos anteponiendo la mejora y eficiencia operativa. Autodidacta multidsciplinario con conocimientos en desarrollo web y programación básica. Estoy en constante búsqueda de conocimiento y oportunidades para crecer profesionalmente y enfrentar próximos desafíos.</p></section>
+            <section id="perfil" class="content-section"><h2>Perfil Profesional</h2><p>Técnico Superior Universitario en Administración de Empresas con más de 18 años de experiencia en análisis de datos, y logística. Destacado por habilidades en el manejo avanzado de Excel, bases de datos y herramientas tecnológicas. Enfocado en la resolución de problemas, atención al detalle, liderazgo y optimización de procesos anteponiendo la mejora y eficiencia operativa. Autodidacta multidsciplinario con conocimientos en desarrollo web y programación básica. Estoy en constante búsqueda de conocimiento y oportunidades para crecer profesionalmente y enfrentar próximos desafíos.</p></section>
             <section id="actualmente" class="content-section">
                 <h2>Actualmente</h2>
                 <div class="grid-2-col">
@@ -219,13 +303,14 @@
                             <li><strong>Calculadora de Insumos:</strong> Optimización de la materia prima por producción.</li>
                             <li><strong>Calculadora de Producción:</strong> Análisis de rendimiento y rentabilidad.</li>
                         </ul>
+                        <p><a href="#" target="_blank">Visita la demo deliPay</a></p>
                     </div>
                     <div class="item-card">
                         <h3><i class="fa-solid fa-book-reader fa-fw"></i> Formación Continua</h3>
                         <p>Comprometido con el aprendizaje constante para fortalecer mi perfil profesional y logístico:</p>
                         <ul>
                             <li>Cursando "Logística y Cadena de Suministro" en <strong>Udemy</strong>.</li>
-                            <li>Explorando activamente nuevas tecnologías (Web 3.0, blockchain, smart contracts, cryptocurrencies) y metodologías de análisis de datos (Análisis Bussines Intelligent para anticipar y recomendar).</li>
+                            <li>Explorando activamente nuevas tecnologías (Web 3.0, blockchain, smart contracts, cryptocurrencies) y metodologías de análisis de datos (Análisis Bussines Intelligent).</li>
                         </ul>
                     </div>
                 </div>
@@ -236,7 +321,7 @@
                 <div class="grid-3-col">
                     <div class="item-card">
                         <h3><i class="fa-solid fa-rocket fa-fw"></i> Misión</h3>
-                        <p>Aportar valor a través de la optimización de procesos y el análisis de datos, convirtiendo información en decisiones estratégicas que impulsen el crecimiento y la eficiencia.</p>
+                        <p>Aportar valor a través de la optimización de procesos y el análisis de datos, convirtiendo información en decisiones estratégicas que impulsen crecimiento y eficiencia.</p>
                     </div>
                     <div class="item-card">
                         <h3><i class="fa-solid fa-eye fa-fw"></i> Visión</h3>
@@ -254,65 +339,109 @@
                 <div class="skills-grid">
                     <div class="skill-category">
                         <h3>Administrativas</h3>
-                        <ul><li>Comunicación Organizacional</li><li>Liderazgo y Trabajo Colaborativo</li><li>Atención al Detalle y Organización</li><li>Resolución de Problemas</li></ul>
+                        <ul>
+                            <li>Comunicación Organizacional</li>
+                            <li>Liderazgo y Trabajo Colaborativo</li>
+                            <li>Atención al Detalle y Organización</li>
+                            <li>Resolución de Problemas</li>
+                        </ul>
                     </div>
                     <div class="skill-category">
                         <h3>Logísticas</h3>
-                        <ul><li>Control de Inventarios</li><li>Gestión de Almacenes</li><li>Manejo de Montacargas</li><li>Optimización de Procesos</li></ul>
+                        <ul>
+                            <li>Control de Inventarios</li>
+                            <li>Gestión de Almacenes</li>
+                            <li>Manejo de Montacargas</li>
+                            <li>Optimización de Procesos</li>
+                        </ul>
                     </div>
                     <div class="skill-category">
                         <h3>Análisis de Datos</h3>
-                        <ul><li>Excel Avanzado (Dashboards, VBA)</li><li>Bases de Datos (SQL)</li><li>Generación de KPIs y Dashboards</li><li>Monitoreo y Análisis de Datos</li></ul>
+                        <ul>
+                            <li>Excel Avanzado (Dashboards, VBA)</li>
+                            <li>Bases de Datos (SQL)</li>
+                            <li>Generación de KPIs y Dashboards</li>
+                            <li>Monitoreo y Análisis de Datos</li>
+                        </ul>
                     </div>
                     <div class="skill-category">
                         <h3>Tecnologías</h3>
-                        <ul><li>HTML & CSS</li><li>JavaScript Básico</li><li>Python Básico</li><li>ERP (CONTPAQi, FrontRest)</li></ul>
+                        <ul>
+                            <li>HTML & CSS</li>
+                            <li>JavaScript Básico</li>
+                            <li>Python Básico</li>
+                            <li>ERP (CONTPAQi, FrontRest)</li>
+                        </ul>
                     </div>
                     <div class="skill-category">
                         <h3>Idiomas</h3>
-                        <ul><li>Inglés avanzado</li><li>Chino básico (desde inglés)</li></ul>
+                        <ul>
+                            <li>Inglés avanzado</li>
+                            <li>Chino básico (desde inglés)</li>
+                        </ul>
                     </div>
                 </div>
             </section>
 
             <section id="proyectos" class="content-section">
                 <h2>Proyectos Destacados</h2>
-                <div class="project-item"><h3>Dashboard Control de Vehículos TVCenlinea.com</h3><p>Como Chofer-almacenista (2018) desarrollé un control de entregas, kilómetros recorridos y consumo de gasolina de diferentes vehículos a mi cargo. Tablas y gráficas en Excel fueron la base de este proyecto cuyo objetivo era tener un vistazo en tiempo real de las entregas realizadas por el chofer y un histórico a partir del llenado diario en un formulario interactivo que permitía recopilar y consolidar información y así llevar un mejor control preventivo y de rendimiento de los vehículos.</p><p><a href="imagCV/dashboardtvc.pdf" target="_blank">Ver Dashboard</a></p></div>
-                <div class="project-item"><h3>Validador y Control de Fondo de Caja TVCenlinea.com</h3><p>Como Auxiliar Administrativo (2020) desarrollé una plantilla para reducir a cero la diferencia en el cobro de efectivo por medio de un validador en excel que a su vez generaba referencia de depósito bancario, control de morralla y control por transacción por medio de fórmulas y hojas de cálculo.</p><p><a href="imagCV/validadortvc.pdf" target="_blank">Ver Validador</a></p></div>
-                <div class="project-item"><h3>Kpi´s Boguet</h3><p>Como Analista de Gategourmet y Supervisor en Boguet (2009-2014) desarrollé una plantilla de Kpi´s automatizada por la retralimentación diaria de cinco tiendas de comida rápida, donde en un solo archivo diario de excel se recopilaba información financiera y de inventario cruzando datos con ERP FrontRest para así llevar el control del inventario y seguimiento de presupuesto en tiempo real.</p><p><a href="imagCV/kpisboguet.pdf">Ver Kpi´s</a></p></div>
-                <div class="project-item"><h3>Nombre del Proyecto 3 (Ej: Automatización de Reportes)</h3><p>Breve descripción del proyecto, las herramientas (VBA, Python Scripts) y el problema que resolvía. Cuantifica el resultado si es posible (ej: "se redujo el tiempo de generación de reportes en un 80%").</p><p><a href="#">Ver Demostración</a></p></div>
+                <div class="project-item">
+                    <h3>Propuesta de mejora: Seguimiento de productividad Santander</h3>
+                    <p>Como Analista dentro del área de Prevención de Fraudes conjugué mi formación y experiencia desarrollando una iniciativa administrativa que buscaba implementar un programa integral de monitoreo permitiendo identificar áreas de mejora en los analistas, optimizando la detección de fraude y asegurando el cumplimiento de objetivos. El modelo proponía un seguimiento gráfico diario, semanal y mensual, con retroalimentación constante entre supervisores y analistas, fomentando la comunicación, la integración y la mejora continua. A corto plazo garantizaría estabilidad operativa; a mediano, consolidaría la eficacia y eficiencia; y a largo, establecería un sistema sostenible de desempeño basado en indicadores objetivos y hábitos de mejora.</p>
+                    <p><a href="imagCV/prpuestamejorasntndr.pdf" target="_blank">Ver Propuesta</a></p>
+                </div>
+                <div class="project-item">
+                    <h3>Dashboard Control de Vehículos TVCenlinea.com</h3>
+                    <p>Como Chofer-almacenista (2018) desarrollé un control de entregas, kilómetros recorridos y consumo de gasolina de diferentes vehículos a mi cargo. Tablas y gráficas en Excel fueron la base de este proyecto cuyo objetivo era tener un vistazo en tiempo real de las entregas realizadas por el chofer y un histórico a partir del llenado diario en un formulario interactivo que permitía recopilar y consolidar información y así llevar un mejor control preventivo y de rendimiento de los vehículos.</p>
+                    <p><a href="imagCV/dashboardtvc.pdf" target="_blank">Ver Dashboard</a></p>
+                </div>
+                <div class="project-item">
+                    <h3>Validador y Control de Fondo de Caja TVCenlinea.com</h3>
+                    <p>Como Auxiliar Administrativo (2020) desarrollé una plantilla para reducir a cero la diferencia en el cobro de efectivo por medio de un validador en excel que a su vez generaba referencia de depósito bancario, control de morralla y control por transacción por medio de fórmulas y hojas de cálculo.</p>
+                    <p><a href="imagCV/validadortvc.pdf" target="_blank">Ver Validador</a></p>
+                </div>
+                <div class="project-item">
+                    <h3>Kpi´s Boguet</h3>
+                    <p>Como Analista de Gategourmet y Supervisor en Boguet (2009-2014) desarrollé una plantilla de Kpi´s automatizada por la retralimentación diaria de cinco tiendas de comida rápida, donde en un solo archivo diario de excel se recopilaba información financiera y de inventario cruzando datos con ERP FrontRest para así llevar el control del inventario y seguimiento de presupuesto en tiempo real.</p>
+                    <p><a href="imagCV/kpisboguet.pdf" target="_blank">Ver Kpi´s</a></p>
+                </div>
+                <div class="project-item">
+                    <h3>Publicación. La pluma y el Dragón</h3>
+                    <p>Proyecto personal. Cuento de realismo mágico redactado para una revista de fomento y recreación social a cargo de la Secretaría de Cultura del Gobierno del Distrito Federal publicado en 2005.</p>
+                    <p><a href="imagCV/laplumayeldragon.pdf" target="_blank">Ver cuento</a></p>
+                </div>                
             </section>
 
             <section id="experiencia" class="content-section">
                 <h2>Experiencia Laboral</h2>
                 <div class="experience-item">
-                    <h3><span>Especialista “A” en Prevención de Fraudes</span><img src="imagCV/santander.png" alt="Santander Logo" class="company-logo"></h3>
-                    <p class="date"><a href="imagCV/credsntndr.jpg" target="_blank">Banco Santander</a></p>
-                    <p class="date">Querétaro | Octubre 2023 – Abril 2025 (1.5 años)</p>
+                    <h3><span>Especialista “A” en Prevención de Fraudes</span><a href="imagCV/credsntndr.jpg" target="_blank"><img src="imagCV/santander.png" alt="Santander Logo" class="company-logo"></a></h3>
+                    <p class="date">Banco Santander</p>
+                    <p class="date"><i class="fa-solid fa-map-marker-alt fa-fw"></i>Querétaro | Octubre 2023 – Abril 2025 (1.5 años)</p>
                     <p>Empresa transnacional. Análisis de datos, monitoreo y análisis de alertas de fraude, aplicación de medidas de mitigación de riesgo. Automatización con VBA, actualización de bases de datos con SQL, Access y VBA. Propuesta de plan de mejora en comunicación interna para optimizar resultados y productividad.</p>
                 </div>
                 <div class="experience-item">
-                    <h3><span>Auxiliar Administrativo y Chofer Almacenista</span><img src="imagCV/tvc.png" alt="TVCenlinea Logo" class="company-logo"></h3>
+                    <h3><span>Auxiliar Administrativo y Chofer Almacenista</span><a href="imagCV/consttvc.jpg" target="_blank"><img src="imagCV/tvc.png" alt="TVCenlinea Logo" class="company-logo"></a></h3>
                     <p class="date">TVC en Linea.com, Venta y distribución de equipos de seguridad electrónica</p>
-                    <p class="date"><a href="imagCV/consttvc.jpg" target="_blank">Querétaro | Abril 2015 – Marzo 2023 (8 años)</a></p>
+                    <p class="date"><i class="fa-solid fa-map-marker-alt fa-fw"></i>Querétaro | Abril 2015 – Marzo 2023 (8 años)</p>
                     <p>Empresa mexicana. Atención al cliente, autorización de pedidos, gestión de pedidos y entrega, conciliación bancaria en línea, análisis financiero. Control de inventarios, embarques y entregas (Kanban). Verificación de órdenes de compra, validación de existencias, conteo de inventarios y resolución de discrepancias. Manejo de montacargas y optimización de procesos logísticos, Gung-Ho! y 5S´s.</p>
                 </div>
                 <div class="experience-item">
-                    <h3><span>Asesor de Ventas</span><img src="imagCV/sears.png" alt="Sears Logo" class="company-logo"></h3>
-                    <p class="date"><a href="imagCV/credsears.jpg" target="_blank">Sears, Tienda Departamental</a></p> 
-                    <p class="date">CDMX | Diciembre 2014 – Febrero 2015</p>
+                    <h3><span>Asesor de Ventas</span><a href="imagCV/credsears.jpg" target="_blank"><img src="imagCV/sears.png" alt="Sears Logo" class="company-logo"></a></h3>
+                    <p class="date">Sears, Tienda Departamental</p> 
+                    <p class="date"><i class="fa-solid fa-map-marker-alt fa-fw"></i>CDMX | Diciembre 2014 – Febrero 2015</p>
                     <p>Empresa transnacional. Atención al cliente, venta y cobro de ropa infantil, cierre de caja, limpieza y acomodo de mercancía.</p>
                 </div>
                 <div class="experience-item">
                     <h3><span>Analista y Supervisor</span><img src="imagCV/gate.png" alt="Gate Gourmet Logo" class="company-logo"></h3>
                     <p class="date"><a href="imagCV/credaicm.jpg" target="_blank">Gate Gourmet & Maasa. Catering aéreo. | Boguet. Cadena de cómida rápida.</a></p>
-                    <p class="date"><a href="imagCV/constgateg.jpg" target="_blank">Aeropuerto Internacional de la CDMX Terminal-2 | Noviembre 2009 – Agosto 2014 (5 años)</a></p>
+                    <p class="date"><a href="imagCV/constgateg.jpg" target="_blank"><i class="fa-solid fa-map-marker-alt fa-fw"></i>Aeropuerto Internacional de la CDMX Terminal-2 | Noviembre 2009 – Agosto 2014 (5 años)</a></p>
                     <p>Empresa transnacional de preparación y distribución de alimentos. Rol dual. Logística, generación de reportes, generación de KPI´s y Dashboards. Facturación a proveedores(Starbucks, Tiendas Extra). Proyección de ventas. Manejo de bases de datos. Activiades en "Boguet": Supervisor y atención al público. Actualización de precios y control de costos. Encargado de tienda. Auditoría y control de inventarios, arqueos de caja. Manejo de ERP Front Desk POS, SQL y Excel.</p>
                 </div>
                 <div class="experience-item">
                     <h3><span>Encargado de Sucursal</span><img src="imagCV/photofolio.png" alt="Photofolio Logo" class="company-logo"></h3>
                     <p class="date">Photofolio. Tienda de regalos.</p>
-                    <p class="date"> CDMX y Saltillo, Coahuila | Octubre 2008 – Julio 2009</p>
+                    <p class="date"><i class="fa-solid fa-map-marker-alt fa-fw"></i>CDMX y Saltillo, Coahuila | Octubre 2008 – Julio 2009</p>
                     <p>Empresa mexicana. Atención a clientes, venta y acomodo de mercancía, depósitos bancarios, manejo de personal y control de inventarios.</p>
                 </div>
                 <div class="experience-item">
@@ -324,7 +453,7 @@
                 <div class="experience-item">
                     <h3><span>Staff Multifuncional</span><img src="imagCV/cinemex.png" alt="Cinemex Logo" class="company-logo"></h3>
                     <p class="date"><a href="imagCV/credcinemex.jpg" target="_blank">Cinemex, Exhibición de películas.</a></p>
-                    <p class="date">Naucalpan, México | Noviembre 2001 – Agosto 2005</p>
+                    <p class="date"><i class="fa-solid fa-map-marker-alt fa-fw"></i>Naucalpan, México | Noviembre 2001 – Agosto 2005</p>
                     <p>Empresa mexicana. Atención a clientes, manejo de efectivo y POS. Recepción, armado y proyección de películas. Logros: Reconocimiento en el área de Concesiones Mar-2002, Empleado del mes Abr-2002, Reconocimiento en el área de Tesorería Abr-2003, <a href="imagCV/piso022003.jpg" target="_blank">Reconocimiento en el área de Piso y Taquilla Dic-2003</a>, <a href="imagCV/ficco2004.jpg" target="_blank">Reconocimiento por participación en el 1er FICCO Mar-2004</a>, <a href="imagCV/proy082004" target="_blank">Reconocimiento en el área de Proyección Ago-2004</a>, <a href="imagCV/proy022005.jpg" target="_blank">Reconocimiento en el área de Proyección Feb-2005</a>, Reconocimiento por participación y proyección de subtítulos en 2do FICCO Mar-2005.</p>
                 </div>
             </section>
@@ -361,7 +490,7 @@
                     <div class="skill-category">
                         <h3>Intereses</h3>
                         <ul>
-                            <li>Lectura y Cine</li>
+                            <li>Lectura (500 ppm) y Cine</li>
                             <li>Guitarrista y músico</li>
                             <li>Organización y Metodología</li>
                             <li>Disfrutar a mi familia</li>
